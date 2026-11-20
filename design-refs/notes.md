@@ -55,6 +55,7 @@
 | `footer-text` | `#9E9FAA` | Footer tagline + links |
 | `footer-strong` | `#E7E7EC` | Footer column titles, copyright, "Browse all courses" link |
 | `footer-divider` | `#656770` | Footer bottom border |
+| `error` | `#B42318` | **New color, not in the design.** Form error text and field border. 6.6:1 on white and 6.2:1 on cream (AA for text and non-text) |
 
 ## Radius / Shadows
 
@@ -316,3 +317,8 @@ From the design (the mobile header has a component named **"Button - Toggle menu
 - Tablet layout is not in Figma → my own decision (breakpoints above).
 - Link destinations: anchors only where the link name matches a section (`Courses`, `Categories` and the "Explore…" CTAs → `#categories`; "See how it works" → `#how-it-works`; `Contact` → `#contact`; "Start learning" → `#featured-course`). Everything else (View course, For Teams, Community, About, Instructors, Log in, Careers, Journal, Help Center, Terms, Privacy) is `href="#"` because those pages or sections do not exist in the design.
 - People collage exported as 4 column images; mobile collage ~34px taller than Figma due to image aspect ratio. On desktop the section is ~10px taller than Figma because of the shadow baked into the PNGs (accepted).
+- Error color `#B42318` is new (the design has no error state); chosen for AA contrast on the white card and the cream inputs.
+- Mobile menu focus: focus goes to the first link on open and back to the hamburger on Esc and when the button is clicked. After a link click it is not forced back (the in-page navigation owns focus), and after a click outside or a resize to desktop it is not moved either.
+- In-page anchors use a plain `<a>` (`AppLink`), not `next/link`: with `<Link>`, clicking an anchor whose hash is already in the URL does nothing once the user has scrolled away.
+- The header is not sticky, so no anchored title can be hidden under it (no `scroll-margin` needed).
+- Contact form is a mock: validation on blur and submit, then "Sending…" for 800ms and a success message. Nothing is sent anywhere.

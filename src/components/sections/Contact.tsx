@@ -1,8 +1,7 @@
 import Image from "next/image";
-import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
-import { Field } from "@/components/ui/Field";
 import { SectionHeading } from "@/components/ui/SectionHeading";
+import { ContactForm } from "./ContactForm";
 import type { ContactContent } from "@/types/content";
 
 interface ContactProps {
@@ -11,8 +10,7 @@ interface ContactProps {
 
 /**
  * < lg: info, then form card. ≥ lg: info (480px) and form card (540px) side by side.
- * The form is structure and visuals only for now (real labels, native `required` and
- * `type="email"`); validation and the mock submit come in Phase 4.
+ * The form is the only client component here (see ContactForm).
  */
 export function Contact({ content }: ContactProps) {
   const { form } = content;
@@ -63,23 +61,7 @@ export function Contact({ content }: ContactProps) {
           </ul>
         </div>
 
-        <form className="flex flex-col gap-6 rounded-card border border-border bg-white px-5 py-6 shadow-form lg:p-10">
-          <div className="flex flex-col gap-2">
-            {/* 20/32 on every breakpoint, unlike the other h5 titles. */}
-            <h3 className="font-heading text-xl leading-8 font-bold text-ink">
-              {form.title}
-            </h3>
-            <p className="type-body text-text">{form.description}</p>
-          </div>
-          <div className="flex flex-col gap-5">
-            {form.fields.map((field) => (
-              <Field key={field.id} field={field} />
-            ))}
-          </div>
-          <Button type="submit" className="w-full">
-            {form.submitLabel}
-          </Button>
-        </form>
+        <ContactForm content={form} />
       </Container>
     </section>
   );

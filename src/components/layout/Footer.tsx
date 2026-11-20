@@ -1,6 +1,6 @@
 import Image from "next/image";
-import Link from "next/link";
 import clsx from "clsx";
+import { AppLink } from "@/components/ui/AppLink";
 import { Container } from "@/components/ui/Container";
 import type { FooterContent } from "@/types/content";
 
@@ -42,12 +42,12 @@ export function Footer({ content }: FooterProps) {
               <ul className="mt-4 flex flex-col gap-3">
                 {column.links.map((link) => (
                   <li key={link.label}>
-                    <Link
+                    <AppLink
                       href={link.href}
                       className="type-body block text-footer-text transition-colors hover:text-white hover:underline"
                     >
                       {link.label}
-                    </Link>
+                    </AppLink>
                   </li>
                 ))}
               </ul>

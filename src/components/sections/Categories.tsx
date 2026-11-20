@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { AppLink } from "@/components/ui/AppLink";
 import { ArrowRightIcon } from "@/components/ui/ArrowRightIcon";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
@@ -28,7 +28,7 @@ export function Categories({ content }: CategoriesProps) {
         <ul className="mt-12 grid gap-4 md:mt-10 md:grid-cols-2 md:gap-5 lg:grid-cols-4">
           {content.items.map((item) => (
             <li key={item.number}>
-              <Link
+              <AppLink
                 href={item.href}
                 className="flex h-full min-h-[200px] flex-col justify-between rounded-card border border-border bg-white p-6 transition-[border-color,box-shadow,transform] hover:border-primary hover:shadow-[0_8px_24px_rgb(23_27_44/0.08)] focus-visible:border-primary motion-safe:hover:-translate-y-1 motion-safe:focus-visible:-translate-y-1 lg:min-h-[260px] lg:p-7"
               >
@@ -45,7 +45,7 @@ export function Categories({ content }: CategoriesProps) {
                   {content.cardCta}
                   <ArrowRightIcon />
                 </span>
-              </Link>
+              </AppLink>
             </li>
           ))}
         </ul>

@@ -1,10 +1,10 @@
 import clsx from "clsx";
-import Link from "next/link";
 import type {
+  AnchorHTMLAttributes,
   ButtonHTMLAttributes,
-  ComponentPropsWithoutRef,
   ReactNode,
 } from "react";
+import { AppLink } from "./AppLink";
 import { ArrowRightIcon } from "./ArrowRightIcon";
 
 export type ButtonVariant = "primary" | "secondary" | "accent" | "link" | "ghost";
@@ -25,7 +25,7 @@ interface ButtonBaseProps {
 }
 
 type ButtonAsLink = ButtonBaseProps &
-  Omit<ComponentPropsWithoutRef<typeof Link>, keyof ButtonBaseProps | "href"> & {
+  Omit<AnchorHTMLAttributes<HTMLAnchorElement>, keyof ButtonBaseProps | "href"> & {
     href: string;
   };
 
@@ -80,9 +80,9 @@ export function Button({
 
   if (rest.href !== undefined) {
     return (
-      <Link className={classes} {...rest}>
+      <AppLink className={classes} {...rest}>
         {content}
-      </Link>
+      </AppLink>
     );
   }
 

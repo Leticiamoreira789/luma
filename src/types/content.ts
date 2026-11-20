@@ -129,6 +129,10 @@ export interface FormFieldConfig {
   placeholder: string;
   autoComplete?: string;
   required: boolean;
+  /** Error shown when a required field is empty. */
+  requiredMessage: string;
+  /** Error shown when an email field has an invalid value. */
+  invalidMessage?: string;
 }
 
 export interface ContactContent {
@@ -141,6 +145,8 @@ export interface ContactContent {
     description: string;
     fields: FormFieldConfig[];
     submitLabel: string;
+    sendingLabel: string;
+    successMessage: string;
   };
 }
 

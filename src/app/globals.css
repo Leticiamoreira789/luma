@@ -29,6 +29,8 @@
   --color-footer-text: #9e9faa;
   --color-footer-strong: #e7e7ec;
   --color-footer-divider: #656770;
+  /* Not in the design: error red, 6.6:1 on white and 6.2:1 on cream (AA for text and borders) */
+  --color-error: #b42318;
 
   /* Radius */
   --radius-tag: 6px; /* small tags, number chips */

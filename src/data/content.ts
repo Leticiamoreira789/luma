@@ -259,6 +259,9 @@ export const contact: ContactContent = {
     title: "Contact us",
     description: "Fill out the fields and we will get in touch.",
     submitLabel: "Send message",
+    sendingLabel: "Sending…",
+    successMessage:
+      "Thanks! Your message has been sent. We will get back to you within 24 hours on business days.",
     fields: [
       {
         id: "contact-name",
@@ -268,6 +271,7 @@ export const contact: ContactContent = {
         placeholder: "Your name",
         autoComplete: "name",
         required: true,
+        requiredMessage: "Please enter your full name.",
       },
       {
         id: "contact-email",
@@ -277,6 +281,8 @@ export const contact: ContactContent = {
         placeholder: "youremail@example.com",
         autoComplete: "email",
         required: true,
+        requiredMessage: "Please enter your email.",
+        invalidMessage: "Please enter a valid email address.",
       },
       {
         id: "contact-message",
@@ -285,6 +291,7 @@ export const contact: ContactContent = {
         type: "textarea",
         placeholder: "Tell us how we can help...",
         required: true,
+        requiredMessage: "Please tell us how we can help.",
       },
     ],
   },
