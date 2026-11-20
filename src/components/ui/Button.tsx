@@ -66,7 +66,7 @@ export function Button({
   const classes = clsx(
     base,
     variants[variant],
-    variant === "link" && (tone === "inverse" ? "text-footer-strong" : "text-ink"),
+    variant === "link" && (tone === "inverse" ? "text-white" : "text-ink"),
     variant !== "link" && variant !== "ghost" && sizes[size],
     className,
   );

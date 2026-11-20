@@ -18,7 +18,8 @@
   --color-primary-soft: #e2e8ff;
   --color-ink: #171b2c;
   --color-text: #656770;
-  --color-text-muted: #6d7384;
+  /* Figma: #6D7384 (4.45:1 on cream). Darkened 3 steps to reach AA on cream (4.6:1) and white (4.95:1). */
+  --color-text-muted: #6a7081;
   --color-border: #dbdfeb;
   --color-cream: #f9f8f3;
   --color-yellow: #ffee7e;

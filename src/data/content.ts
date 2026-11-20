@@ -80,13 +80,13 @@ export const hero: HeroContent = {
     ],
   },
   image: {
-    src: "/images/hero-learner.png",
+    src: "/images/hero-learner.webp",
     alt: "Person focused on learning at their laptop",
     width: 1000,
     height: 1040,
   },
   imageMobile: {
-    src: "/images/hero-learner-mobile.png",
+    src: "/images/hero-learner-mobile.webp",
     alt: "Person focused on learning at their laptop",
     width: 692,
     height: 760,
@@ -141,13 +141,13 @@ export const featuredCourse: FeaturedCourseContent = {
   primaryCta: { label: "View course", href: "#" },
   secondaryCta: { label: "Browse all courses", href: "#categories" },
   image: {
-    src: "/images/featured-course.png",
+    src: "/images/featured-course.webp",
     alt: "Product design course: student working on interface designs",
     width: 1076,
     height: 816,
   },
   imageMobile: {
-    src: "/images/featured-course-mobile.png",
+    src: "/images/featured-course-mobile.webp",
     alt: "Product design course: student working on interface designs",
     width: 724,
     height: 560,
@@ -211,25 +211,25 @@ export const people: PeopleContent = {
   cta: { label: "Explore teachers and students", href: "#" },
   collage: [
     {
-      src: "/images/people/people-col-1.png",
+      src: "/images/people/people-col-1.webp",
       alt: "Students studying at home and in class",
       width: 293,
       height: 891,
     },
     {
-      src: "/images/people/people-col-2.png",
+      src: "/images/people/people-col-2.webp",
       alt: "Students reading, singing and studying",
       width: 222,
       height: 1060,
     },
     {
-      src: "/images/people/people-col-3.png",
+      src: "/images/people/people-col-3.webp",
       alt: "A graduate, a student working at her desk and an online lesson",
       width: 222,
       height: 931,
     },
     {
-      src: "/images/people/people-col-4.png",
+      src: "/images/people/people-col-4.webp",
       alt: "Two students with books and a coffee on campus",
       width: 273,
       height: 721,

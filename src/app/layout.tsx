@@ -19,9 +19,12 @@ const inter = Inter({
   variable: "--font-inter",
 });
 
-const siteUrl = process.env.VERCEL_PROJECT_PRODUCTION_URL
-  ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
-  : "http://localhost:3000";
+// Absolute base for og:image and other metadata URLs. Set NEXT_PUBLIC_SITE_URL on hosts other than Vercel.
+const siteUrl =
+  process.env.NEXT_PUBLIC_SITE_URL ??
+  (process.env.VERCEL_PROJECT_PRODUCTION_URL
+    ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
+    : "http://localhost:3000");
 
 const title = "luma. | Practical learning for curious people";
 const description =

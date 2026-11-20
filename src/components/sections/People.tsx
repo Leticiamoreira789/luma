@@ -27,7 +27,7 @@ export function People({ content }: PeopleProps) {
     <section
       id="people"
       aria-labelledby="people-title"
-      className="bg-cream py-[60px] md:py-20 lg:py-[100px]"
+      className="overflow-x-clip bg-cream py-[60px] md:py-20 lg:py-[100px]"
     >
       <Container className="flex flex-col gap-8 md:gap-[60px] lg:flex-row lg:items-center">
         <div className="flex flex-col items-start gap-6 lg:flex-1 lg:gap-8">

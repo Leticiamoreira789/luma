@@ -1,4 +1,5 @@
 import { getImageProps } from "next/image";
+import { preload } from "react-dom";
 import type { ImageAsset } from "@/types/content";
 
 interface ResponsivePictureProps {
@@ -16,7 +17,8 @@ interface ResponsivePictureProps {
 /**
  * Art direction with <picture>. Both images go through the next/image optimizer
  * (via getImageProps) and the browser downloads only the matching one.
- * `preload` is not used on purpose: it would preload both sources.
+ * The eager (LCP) image also gets a media-scoped <link rel="preload"> per source, so each
+ * viewport preloads only its own image (the `preload` prop of next/image would preload both).
  */
 export function ResponsivePicture({
   desktop,
@@ -45,6 +47,24 @@ export function ResponsivePicture({
     height: mobile.height,
     sizes: mobileSizes,
   });
+
+  if (eager) {
+    // Each preload is scoped by media, so only the image that will actually be used is fetched early.
+    preload(desktopImage.props.src, {
+      as: "image",
+      imageSrcSet: desktopImage.props.srcSet,
+      imageSizes: desktopSizes,
+      fetchPriority: "high",
+      media: "(min-width: 768px)",
+    });
+    preload(mobileImage.props.src, {
+      as: "image",
+      imageSrcSet: mobileImage.props.srcSet,
+      imageSizes: mobileSizes,
+      fetchPriority: "high",
+      media: "(max-width: 767px)",
+    });
+  }
 
   return (
     <picture>

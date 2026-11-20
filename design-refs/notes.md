@@ -43,7 +43,7 @@
 | `primary-soft` | `#E2E8FF` | Number tags, icon boxes, avatar fallback, decorative circles |
 | `ink` | `#171B2C` | Headings, strong text, footer bg, logo |
 | `text` | `#656770` | Body/subtitle text, nav links, Log in |
-| `text-muted` | `#6D7384` | Card descriptions, stat labels, placeholders, step labels |
+| `text-muted` | `#6D7384` in Figma, **`#6A7081` in code** | Card descriptions, stat labels, placeholders, step labels. Darkened 3 steps: `#6D7384` is 4.45:1 on cream, below AA |
 | `border` | `#DBDFEB` | Card/input/button borders, header bottom border, dividers |
 | `cream` | `#F9F8F3` | Page bg, header, hero, How it works, People, contact items, input bg |
 | `white` | `#FFFFFF` | Categories, Testimonial, Contact bg, cards |
@@ -133,7 +133,7 @@
   - col4 (centered): 128×205, 103×132
   - *(widths ≈102.72 / 138.03 / 128.4; exact per PNG)*
   - Photos radius 4 + collage shadow, `object-cover`. Alts: describe each person/scene briefly.
-- **Assets: exported as 4 column images** (`public/images/people/people-col-1.png` … `people-col-4.png`). Each one already contains its photos, gaps, radius, and shadows. The circle behind them is CSS.
+- **Assets: exported as 4 column images** (`public/images/people/people-col-1.webp` … `people-col-4.webp`). Each one already contains its photos, gaps, radius, and shadows. The circle behind them is CSS.
   - Build the collage as: circle (CSS) + a flex row of 4 `next/image` with the staggered offsets above (`items-center`, col1 `pt-16` + `self-end` content, col2 `pt-[26px]`).
   - On mobile, reuse the same 4 images, scaled down (widths 94/72/72/88 → keep aspect ratio). The mobile gap between photos is slightly smaller (8 vs 12.84px), and the difference is negligible at that size.
   - Alt text: one short description per column (e.g. "Students studying at home and in class"), or treat the collage as decorative with one descriptive `aria-label` on the group.
@@ -201,17 +201,20 @@ All files are in `public/`. "Where used" refers to the sections above.
 | `icons/deco-ticket.svg` | Final CTA, ticket |
 | `icons/deco-circle.svg` | Final CTA, 32px outline circle (used twice) |
 | `icons/deco-square.svg` | Final CTA, outline rounded square (56px, rotated 12°) |
-| `images/hero-learner.png` | Hero photo (1252×1048) |
-| `images/featured-course.png` | Featured Course photo (1100×840) |
+| `images/hero-learner.webp` | Hero photo, desktop and tablet (1000×1040, photo only) |
+| `images/hero-learner-mobile.webp` | Hero photo, mobile crop (692×760, photo only) |
+| `images/hero-avatar-01.png` … `03.png` | Hero trust row, 3 overlapping avatars (64×64, cream border baked in) |
+| `images/featured-course.webp` | Featured Course photo, desktop and tablet (1076×816) |
+| `images/featured-course-mobile.webp` | Featured Course photo, mobile crop (724×560) |
 | `images/testimonial-alex-morgan.png` | Testimonial avatar (96×96) |
 | `images/cta-avatar-01.png` … `04.png` | Final CTA, 4 overlapping avatars (80×80, yellow border baked in) |
-| `images/people/people-col-1.png` … `4.png` | People collage, 4 columns (transparent PNG, shadows baked in) |
+| `images/people/people-col-1.webp` … `4.webp` | People collage, 4 columns (transparent, shadows and vertical offsets baked in) |
 
-### Pending / generated assets
-- **Clean `hero-learner.png` and `featured-course.png` (photo only):** to be re-exported. The current files have UI baked in (hero: badges, peach bar, lavender circle; featured: "FEATURED COURSE" tag), so they are placeholders until then.
-- **Hero trust-row avatars `images/hero-avatar-01.png` … `03.png`:** to be exported with the cream border baked in (intentional, like the CTA avatars with the yellow border). Do not add borders in CSS to any avatar.
-- **Hamburger icon (mobile):** inline SVG in the Header component (3 lines, 1.5px stroke).
-- **OG image and favicon:** generated in code (`src/app/opengraph-image.tsx`, `src/app/icon.tsx`). The OG title font is `src/fonts/PlusJakartaSans-ExtraBold.ttf`.
+Large photos are stored as WebP (quality 95, lossless alpha), converted from the Figma PNG exports: 4.8 MB → 0.8 MB with a mean difference of ~1/255 and no pixel off by more than 16/255. `next/image` still serves them resized as WebP. Keep converting new exports the same way.
+
+### Generated in code
+- **OG image and favicon:** `src/app/opengraph-image.tsx` and `src/app/icon.tsx`. The OG title font is `src/fonts/PlusJakartaSans-ExtraBold.ttf`.
+- **Hamburger icon (mobile):** inline SVG in `MobileMenu`.
 
 ## Mobile
 
@@ -322,3 +325,4 @@ From the design (the mobile header has a component named **"Button - Toggle menu
 - In-page anchors use a plain `<a>` (`AppLink`), not `next/link`: with `<Link>`, clicking an anchor whose hash is already in the URL does nothing once the user has scrolled away.
 - The header is not sticky, so no anchored title can be hidden under it (no `scroll-margin` needed).
 - Contact form is a mock: validation on blur and submit, then "Sending…" for 800ms and a success message. Nothing is sent anywhere.
+- Contrast (AA) fixes, found by Lighthouse: `text-muted` is `#6A7081` instead of `#6D7384`, and the Featured chips and "Browse all courses" link text are white instead of `#E7E7EC` (4.45:1 on the primary blue).

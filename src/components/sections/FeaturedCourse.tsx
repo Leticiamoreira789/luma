@@ -49,7 +49,7 @@ export function FeaturedCourse({ content }: FeaturedCourseProps) {
             {content.chips.map((chip) => (
               <li
                 key={chip}
-                className="type-body rounded-control border border-border px-3.5 py-1.5 text-footer-strong lg:text-white"
+                className="type-body rounded-control border border-border px-3.5 py-1.5 text-white"
               >
                 {chip}
               </li>
@@ -69,7 +69,6 @@ export function FeaturedCourse({ content }: FeaturedCourseProps) {
               tone="inverse"
               href={content.secondaryCta.href}
               className="self-center px-4 py-[13px] md:self-auto"
-              arrowClassName="text-white"
             >
               {content.secondaryCta.label}
             </Button>
