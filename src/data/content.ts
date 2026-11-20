@@ -1,11 +1,14 @@
 import type {
   CategoriesContent,
+  ContactContent,
   FeaturedCourseContent,
+  FinalCtaContent,
   FooterContent,
   HeaderActions,
   HeroContent,
   HowItWorksContent,
   NavItem,
+  PeopleContent,
   TestimonialContent,
 } from "@/types/content";
 
@@ -198,4 +201,105 @@ export const testimonial: TestimonialContent = {
     { value: "120+", label: "expert-led courses" },
     { value: "92%", label: "complete their first course" },
   ],
+};
+
+export const people: PeopleContent = {
+  eyebrow: "The people",
+  title: "Meet international students & teachers",
+  // Lorem ipsum in the design, kept as is.
+  body: "Morbi sit egestas dignissim pharetra, sed amet. Tempus justo senectus risus ac vel, velit, nunc. Eget commodo eget in aliquam facilisi facilisi nec magna hendrerit. Placerat ipsum sit tellus urna, faucibus aenean lorem faucibus integer.",
+  cta: { label: "Explore teachers and students", href: "#" },
+  collage: [
+    {
+      src: "/images/people/people-col-1.png",
+      alt: "Students studying at home and in class",
+      width: 293,
+      height: 891,
+    },
+    {
+      src: "/images/people/people-col-2.png",
+      alt: "Students reading, singing and studying",
+      width: 222,
+      height: 1060,
+    },
+    {
+      src: "/images/people/people-col-3.png",
+      alt: "A graduate, a student working at her desk and an online lesson",
+      width: 222,
+      height: 931,
+    },
+    {
+      src: "/images/people/people-col-4.png",
+      alt: "Two students with books and a coffee on campus",
+      width: 273,
+      height: 721,
+    },
+  ],
+};
+
+export const contact: ContactContent = {
+  eyebrow: "Contact",
+  title: "Get in touch",
+  description:
+    "Have a question? We’re here to help. Whether you’re looking for the right course, learning with your team or interested in teaching with Luma, we’d love to hear from you.",
+  items: [
+    {
+      icon: "/icons/contact-email.svg",
+      title: "Email",
+      detail: "contact@luma.com",
+      href: "mailto:contact@luma.com",
+    },
+    {
+      icon: "/icons/contact-response-time.svg",
+      title: "Response Time",
+      detail: "Up to 24 hours on business days",
+    },
+  ],
+  form: {
+    title: "Contact us",
+    description: "Fill out the fields and we will get in touch.",
+    submitLabel: "Send message",
+    fields: [
+      {
+        id: "contact-name",
+        name: "name",
+        label: "Full name",
+        type: "text",
+        placeholder: "Your name",
+        autoComplete: "name",
+        required: true,
+      },
+      {
+        id: "contact-email",
+        name: "email",
+        label: "Email",
+        type: "email",
+        placeholder: "youremail@example.com",
+        autoComplete: "email",
+        required: true,
+      },
+      {
+        id: "contact-message",
+        name: "message",
+        label: "Your question",
+        type: "textarea",
+        placeholder: "Tell us how we can help...",
+        required: true,
+      },
+    ],
+  },
+};
+
+export const finalCta: FinalCtaContent = {
+  title: "What will you learn next?",
+  subtitle: "Start with one course. Build from there.",
+  primaryCta: { label: "Explore all courses", href: "#categories" },
+  secondaryCta: { label: "Join Luma", href: "#" },
+  // Decorative: the yellow border is part of the image.
+  avatars: [1, 2, 3, 4].map((n) => ({
+    src: `/images/cta-avatar-0${n}.png`,
+    alt: "",
+    width: 80,
+    height: 80,
+  })),
 };

@@ -102,3 +102,52 @@ export interface TestimonialContent {
   author: { name: string; role: string; avatar: ImageAsset };
   stats: Stat[];
 }
+
+export interface PeopleContent {
+  eyebrow: string;
+  title: string;
+  body: string;
+  cta: NavItem;
+  /** One image per collage column, left to right. Each already contains its photos, spacing and shadows. */
+  collage: ImageAsset[];
+}
+
+export interface ContactItem {
+  /** 40×40 SVG that already includes the icon box. */
+  icon: string;
+  title: string;
+  detail: string;
+  /** Renders the detail as a link (e.g. `mailto:`). */
+  href?: string;
+}
+
+export interface FormFieldConfig {
+  id: string;
+  name: string;
+  label: string;
+  type: "text" | "email" | "textarea";
+  placeholder: string;
+  autoComplete?: string;
+  required: boolean;
+}
+
+export interface ContactContent {
+  eyebrow: string;
+  title: string;
+  description: string;
+  items: ContactItem[];
+  form: {
+    title: string;
+    description: string;
+    fields: FormFieldConfig[];
+    submitLabel: string;
+  };
+}
+
+export interface FinalCtaContent {
+  title: string;
+  subtitle: string;
+  primaryCta: NavItem;
+  secondaryCta: NavItem;
+  avatars: ImageAsset[];
+}

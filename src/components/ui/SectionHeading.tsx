@@ -15,6 +15,10 @@ interface SectionHeadingProps {
   tone?: "default" | "inverse";
   /** id of the heading element, for `aria-labelledby` on the parent section. */
   id?: string;
+  /** 8px between eyebrow and title instead of 16px (People section). */
+  tight?: boolean;
+  /** Subtitle is 14/24 on mobile and tablet, 18/28 on desktop (Contact section). */
+  smallSubtitleOnMobile?: boolean;
   className?: string;
 }
 
@@ -33,6 +37,8 @@ export function SectionHeading({
   align = "left",
   tone = "default",
   id,
+  tight = false,
+  smallSubtitleOnMobile = false,
   className,
 }: SectionHeadingProps) {
   const inverse = tone === "inverse";
@@ -49,7 +55,7 @@ export function SectionHeading({
         className={clsx(
           titleStyles[size],
           inverse ? "text-white" : "text-ink",
-          eyebrow && "mt-4",
+          eyebrow && (tight ? "mt-2" : "mt-4"),
         )}
       >
         {title}
@@ -57,7 +63,10 @@ export function SectionHeading({
       {subtitle && (
         <p
           className={clsx(
-            "type-subtitle-1 mt-4",
+            smallSubtitleOnMobile
+              ? "type-subtitle-2 lg:type-subtitle-1"
+              : "type-subtitle-1",
+            "mt-4",
             inverse ? "text-white" : "text-text",
           )}
         >
