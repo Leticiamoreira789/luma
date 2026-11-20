@@ -48,8 +48,7 @@ export function People({ content }: PeopleProps) {
           </Button>
         </div>
 
-        {/* lg:-mb-2.5: the tallest column image (530px) includes 10px that the Figma row does not count, so the section stays 720px tall. */}
-        <div className="relative flex items-center justify-between md:justify-center md:gap-2 lg:-mb-2.5 lg:flex-1">
+        <div className="relative flex items-center justify-between md:justify-center md:gap-2 lg:flex-1">
           <div
             aria-hidden="true"
             className="absolute top-1/2 left-1/2 size-[330px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-primary-soft md:size-[500px]"
