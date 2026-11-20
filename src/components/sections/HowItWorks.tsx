@@ -40,8 +40,6 @@ function StepIcon({ variant }: { variant: StepIconVariant }) {
  * < md: steps stacked, with short vertical connectors between them.
  * md–lg (tablet, not in Figma): 3 columns, no connector.
  * ≥ lg: 3 columns with a horizontal connector through the icons.
- * Some spacings (77px below the heading, 9px/13px inside a step) are measured from design-refs
- * and differ by 1–3px from the round values in notes.md.
  */
 export function HowItWorks({ content }: HowItWorksProps) {
   const lastIndex = content.steps.length - 1;
@@ -60,13 +58,13 @@ export function HowItWorks({ content }: HowItWorksProps) {
           title={content.title}
         />
 
-        <ol className="mt-10 flex flex-col md:grid md:grid-cols-3 md:gap-10 lg:mt-[77px] lg:gap-20">
+        <ol className="mt-10 flex flex-col md:grid md:grid-cols-3 md:gap-10 lg:mt-20 lg:gap-20">
           {content.steps.map((step, index) => (
             <li
               key={step.label}
               className={clsx(
                 "relative md:py-7",
-                // Mobile: 40px below the heading, 48px + 28px between steps (measured from the design).
+                // Mobile: 40px below the heading; steps are 48px apart plus the 28px step padding.
                 index > 0 && "pt-12",
                 index < lastIndex && "pb-7",
               )}
@@ -74,7 +72,7 @@ export function HowItWorks({ content }: HowItWorksProps) {
               {index > 0 && (
                 <span
                   aria-hidden="true"
-                  className="absolute top-0 left-7 h-[45px] w-px bg-border md:hidden"
+                  className="absolute top-0 left-7 h-12 w-px bg-border md:hidden"
                 />
               )}
               {index < lastIndex && (
@@ -85,8 +83,8 @@ export function HowItWorks({ content }: HowItWorksProps) {
               )}
               <StepIcon variant={step.icon} />
               <p className="type-overline mt-6 text-text-muted">{step.label}</p>
-              <h3 className="type-h5 mt-[9px] text-ink">{step.title}</h3>
-              <p className="type-subtitle-2 mt-[13px] text-text md:max-w-80">
+              <h3 className="type-h5 mt-2 text-ink">{step.title}</h3>
+              <p className="type-subtitle-2 mt-3 text-text md:max-w-80">
                 {step.description}
               </p>
             </li>

@@ -135,7 +135,7 @@ export const featuredCourse: FeaturedCourseContent = {
     "Learn how to turn complex workflows into simple, intentional product experiences through research, structure and thoughtful interaction design.",
   instructor: "with Maya Chen · Senior Product Designer",
   chips: ["8 lessons", "2h 40min", "Intermediate"],
-  primaryCta: { label: "View course", href: "#featured-course" },
+  primaryCta: { label: "View course", href: "#" },
   secondaryCta: { label: "Browse all courses", href: "#categories" },
   image: {
     src: "/images/featured-course.png",
@@ -187,7 +187,8 @@ export const testimonial: TestimonialContent = {
     role: "Product Manager",
     avatar: {
       src: "/images/testimonial-alex-morgan.png",
-      alt: "Alex Morgan",
+      // Decorative: the name is already in the figcaption.
+      alt: "",
       width: 96,
       height: 96,
     },

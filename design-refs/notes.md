@@ -118,7 +118,7 @@
 
 ### 6. Testimonial + Stats: bg `white`, padding 100/80
 - Row `justify-between`, gap 60, items center.
-- Left (max-w 600): quote mark glyph (24×22, `primary`; export SVG or use a styled “"” character) → quote (`quote` style, `ink`, pt 16) → author row (pt 32, gap 16): avatar 48px round (alt *"Alex Morgan"*) + name `subtitle-2` 700 `ink` / role `body-1` `text` "Product Manager".
+- Left (max-w 600): quote mark glyph (24×22, `primary`; export SVG or use a styled “"” character) → quote (`quote` style, `ink`, pt 16) → author row (pt 32, gap 16): avatar 48px round (`alt=""`, the name is already in the figcaption) + name `subtitle-2` 700 `ink` / role `body-1` `text` "Product Manager".
 - Right column (≈401 wide): **border-left 1px `border`**, padding-left 48, gap 20. Three stats: number in `h1` style `primary` (24K+, 120+, 92%) + label `body-1` `text-muted` (pt 4).
 - Use a `<blockquote>` + `<figcaption>`, and a `<dl>` for the stats.
 
@@ -314,4 +314,4 @@ From the design (the mobile header has a component named **"Button - Toggle menu
 - Step 2 text differs between mobile and desktop → unified.
 - Small per-breakpoint color differences (step 2 icon bg, People paragraph color, copyright color) → followed each breakpoint as designed.
 - Tablet layout is not in Figma → my own decision (breakpoints above).
-- Link destinations: anchors only where the link name matches a section (`Courses`, `Categories` and the "Explore…" CTAs → `#categories`; "See how it works" → `#how-it-works`; `Contact` → `#contact`; "Start learning" and "View course" → `#featured-course`). Everything else (For Teams, Community, About, Instructors, Log in, Careers, Journal, Help Center, Terms, Privacy) is `href="#"` because those pages or sections do not exist in the design.
+- Link destinations: anchors only where the link name matches a section (`Courses`, `Categories` and the "Explore…" CTAs → `#categories`; "See how it works" → `#how-it-works`; `Contact` → `#contact`; "Start learning" → `#featured-course`). Everything else (View course, For Teams, Community, About, Instructors, Log in, Careers, Journal, Help Center, Terms, Privacy) is `href="#"` because those pages or sections do not exist in the design.

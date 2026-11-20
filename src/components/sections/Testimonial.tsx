@@ -18,7 +18,7 @@ export function Testimonial({ content }: TestimonialProps) {
   return (
     <section
       id="testimonial"
-      aria-label="Testimonial and numbers"
+      aria-label="What our learners say"
       className="bg-white py-[60px] md:py-20 lg:py-[100px]"
     >
       <Container className="flex flex-col gap-[60px] lg:flex-row lg:items-center lg:justify-between">
@@ -53,7 +53,7 @@ export function Testimonial({ content }: TestimonialProps) {
         <dl className="grid grid-cols-3 lg:flex lg:w-[385px] lg:shrink-0 lg:flex-col lg:gap-5 lg:border-l lg:border-border lg:pl-12">
           {content.stats.map((stat) => (
             <div key={stat.label} className="flex flex-col-reverse justify-end gap-1">
-              <dt className="type-body leading-6 text-text-muted lg:leading-[21px]">
+              <dt className="type-body text-text-muted">
                 {stat.label}
               </dt>
               <dd className="type-h1 text-primary">{stat.value}</dd>
