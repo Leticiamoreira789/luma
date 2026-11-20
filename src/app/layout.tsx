@@ -1,5 +1,8 @@
 import type { Metadata, Viewport } from "next";
 import { Inter, Plus_Jakarta_Sans } from "next/font/google";
+import { Footer } from "@/components/layout/Footer";
+import { Header } from "@/components/layout/Header";
+import { footer, headerActions, mainNav } from "@/data/content";
 import "./globals.css";
 
 const plusJakartaSans = Plus_Jakarta_Sans({
@@ -53,9 +56,11 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         >
           Skip to content
         </a>
+        <Header items={mainNav} actions={headerActions} />
         <main id="main" tabIndex={-1} className="flex-1">
           {children}
         </main>
+        <Footer content={footer} />
       </body>
     </html>
   );
