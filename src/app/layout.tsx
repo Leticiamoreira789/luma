@@ -19,12 +19,13 @@ const inter = Inter({
   variable: "--font-inter",
 });
 
-// Absolute base for og:image and other metadata URLs. Set NEXT_PUBLIC_SITE_URL on hosts other than Vercel.
+// Absolute base for og:image and other metadata URLs. Fallback order:
+// 1. NEXT_PUBLIC_SITE_URL (any host)  2. the Vercel production domain  3. local development.
+const vercelUrl = process.env.VERCEL_PROJECT_PRODUCTION_URL;
 const siteUrl =
-  process.env.NEXT_PUBLIC_SITE_URL ??
-  (process.env.VERCEL_PROJECT_PRODUCTION_URL
-    ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
-    : "http://localhost:3000");
+  process.env.NEXT_PUBLIC_SITE_URL ||
+  (vercelUrl ? `https://${vercelUrl}` : "") ||
+  "http://localhost:3000";
 
 const title = "luma. | Practical learning for curious people";
 const description =
