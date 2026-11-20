@@ -14,8 +14,12 @@ interface ButtonBaseProps {
   variant?: ButtonVariant;
   /** `md`: 14px 28px padding (52px tall). `sm`: 10px 20px (44px tall, header). Ignored by `link` and `ghost`. */
   size?: ButtonSize;
+  /** `inverse` is for dark/primary backgrounds. Only affects the `link` variant for now. */
+  tone?: "default" | "inverse";
   /** Trailing 20px arrow. Defaults to true for the `link` variant. */
   arrow?: boolean;
+  /** Classes for the arrow icon, e.g. to color it differently from the text. */
+  arrowClassName?: string;
   className?: string;
   children: ReactNode;
 }
@@ -40,7 +44,7 @@ const variants: Record<ButtonVariant, string> = {
   primary: "bg-primary text-white hover:bg-primary-hover",
   secondary: "border border-border bg-white text-ink hover:bg-cream",
   accent: "bg-yellow text-ink hover:brightness-95",
-  link: "text-ink hover:underline",
+  link: "hover:underline",
   ghost: "font-normal text-text hover:text-ink px-4 py-2.5",
 };
 
@@ -52,7 +56,9 @@ const sizes: Record<ButtonSize, string> = {
 export function Button({
   variant = "primary",
   size = "md",
+  tone = "default",
   arrow = variant === "link",
+  arrowClassName,
   className,
   children,
   ...rest
@@ -60,6 +66,7 @@ export function Button({
   const classes = clsx(
     base,
     variants[variant],
+    variant === "link" && (tone === "inverse" ? "text-footer-strong" : "text-ink"),
     variant !== "link" && variant !== "ghost" && sizes[size],
     className,
   );
@@ -67,7 +74,7 @@ export function Button({
   const content = (
     <>
       {children}
-      {arrow && <ArrowRightIcon />}
+      {arrow && <ArrowRightIcon className={arrowClassName} />}
     </>
   );
 

@@ -61,3 +61,44 @@ export interface CategoriesContent {
   cardCta: string;
   items: CategoryItem[];
 }
+
+export interface FeaturedCourseContent {
+  tag: string;
+  eyebrow: string;
+  title: string;
+  description: string;
+  instructor: string;
+  chips: string[];
+  primaryCta: NavItem;
+  secondaryCta: NavItem;
+  /** Desktop and tablet photo (538×408). */
+  image: ImageAsset;
+  /** Mobile photo (362×280). */
+  imageMobile: ImageAsset;
+}
+
+export type StepIconVariant = "focus" | "experience" | "practice";
+
+export interface HowItWorksStep {
+  label: string;
+  title: string;
+  description: string;
+  icon: StepIconVariant;
+}
+
+export interface HowItWorksContent {
+  eyebrow: string;
+  title: string;
+  steps: HowItWorksStep[];
+}
+
+export interface Stat {
+  value: string;
+  label: string;
+}
+
+export interface TestimonialContent {
+  quote: string;
+  author: { name: string; role: string; avatar: ImageAsset };
+  stats: Stat[];
+}

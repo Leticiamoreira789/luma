@@ -1,6 +1,7 @@
-import Image, { getImageProps } from "next/image";
+import Image from "next/image";
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
+import { ResponsivePicture } from "@/components/ui/ResponsivePicture";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import type { HeroContent } from "@/types/content";
 
@@ -19,30 +20,6 @@ interface HeroProps {
  */
 export function Hero({ content }: HeroProps) {
   const { trust, courseBadge, ratingBadge } = content;
-
-  // Art direction: the mobile frame uses a different crop of the photo than desktop/tablet.
-  // The hero photo is the LCP on every viewport, so it uses fetchPriority instead of
-  // `preload` (which would preload both sources).
-  const common = { fetchPriority: "high", loading: "eager" } as const;
-  const desktopSizes =
-    "(min-width: 1280px) 500px, (min-width: 1024px) 400px, 500px";
-  const mobileSizes = "346px";
-  const desktopImage = getImageProps({
-    ...common,
-    alt: content.image.alt,
-    src: content.image.src,
-    width: content.image.width,
-    height: content.image.height,
-    sizes: desktopSizes,
-  });
-  const mobileImage = getImageProps({
-    ...common,
-    alt: content.imageMobile.alt,
-    src: content.imageMobile.src,
-    width: content.imageMobile.width,
-    height: content.imageMobile.height,
-    sizes: mobileSizes,
-  });
 
   return (
     <section
@@ -107,24 +84,15 @@ export function Hero({ content }: HeroProps) {
           />
 
           <div className="absolute inset-y-0 inset-x-2 overflow-hidden rounded-card md:inset-x-0 md:rounded-hero">
-            <picture>
-              <source
-                media="(min-width: 768px)"
-                srcSet={desktopImage.props.srcSet}
-                sizes={desktopSizes}
-              />
-              <source
-                media="(max-width: 767px)"
-                srcSet={mobileImage.props.srcSet}
-                sizes={mobileSizes}
-              />
-              {/* The <img> is the fallback of <picture>; next/image cannot render it. */}
-              <img
-                {...mobileImage.props}
-                alt={content.image.alt}
-                className="size-full object-cover"
-              />
-            </picture>
+            {/* The hero photo is the LCP on every viewport, hence eager. */}
+            <ResponsivePicture
+              eager
+              desktop={content.image}
+              mobile={content.imageMobile}
+              desktopSizes="(min-width: 1280px) 500px, (min-width: 1024px) 400px, 500px"
+              mobileSizes="346px"
+              className="size-full object-cover"
+            />
           </div>
 
           <div className="absolute top-1.5 left-0 flex items-center gap-3 rounded-item bg-white px-4 py-3 shadow-badge md:top-4 md:-left-[22px]">

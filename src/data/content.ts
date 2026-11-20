@@ -1,9 +1,12 @@
 import type {
   CategoriesContent,
+  FeaturedCourseContent,
   FooterContent,
   HeaderActions,
   HeroContent,
+  HowItWorksContent,
   NavItem,
+  TestimonialContent,
 } from "@/types/content";
 
 /*
@@ -121,5 +124,77 @@ export const categories: CategoriesContent = {
       description: "Explore new ways to communicate, create and tell stories.",
       href: "#",
     },
+  ],
+};
+
+export const featuredCourse: FeaturedCourseContent = {
+  tag: "Featured course",
+  eyebrow: "Most popular this month",
+  title: "Designing products people understand.",
+  description:
+    "Learn how to turn complex workflows into simple, intentional product experiences through research, structure and thoughtful interaction design.",
+  instructor: "with Maya Chen · Senior Product Designer",
+  chips: ["8 lessons", "2h 40min", "Intermediate"],
+  primaryCta: { label: "View course", href: "#featured-course" },
+  secondaryCta: { label: "Browse all courses", href: "#categories" },
+  image: {
+    src: "/images/featured-course.png",
+    alt: "Product design course: student working on interface designs",
+    width: 1076,
+    height: 816,
+  },
+  imageMobile: {
+    src: "/images/featured-course-mobile.png",
+    alt: "Product design course: student working on interface designs",
+    width: 724,
+    height: 560,
+  },
+};
+
+export const howItWorks: HowItWorksContent = {
+  eyebrow: "How Luma works",
+  title: "Less browsing. More learning.",
+  steps: [
+    {
+      label: "Step 01",
+      title: "Choose your focus",
+      description:
+        "Find courses based on the skill you want to build, not endless content categories.",
+      icon: "focus",
+    },
+    {
+      label: "Step 02",
+      title: "Learn from experience",
+      description:
+        "Follow concise lessons created by professionals who use these skills.",
+      icon: "experience",
+    },
+    {
+      label: "Step 03",
+      title: "Put it into practice",
+      description:
+        "Every course includes practical exercises designed to turn knowledge into action.",
+      icon: "practice",
+    },
+  ],
+};
+
+export const testimonial: TestimonialContent = {
+  quote:
+    "The lessons are short enough to fit into my week, but detailed enough that I actually leave with something I can use.",
+  author: {
+    name: "Alex Morgan",
+    role: "Product Manager",
+    avatar: {
+      src: "/images/testimonial-alex-morgan.png",
+      alt: "Alex Morgan",
+      width: 96,
+      height: 96,
+    },
+  },
+  stats: [
+    { value: "24K+", label: "active learners" },
+    { value: "120+", label: "expert-led courses" },
+    { value: "92%", label: "complete their first course" },
   ],
 };
