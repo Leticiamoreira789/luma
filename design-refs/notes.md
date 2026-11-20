@@ -180,12 +180,37 @@
 
 ---
 
-## Assets to export (if not done yet)
-- [ ] Logo "luma." → SVG (dark + white)
-- [ ] Hero photo, Featured photo, Alex Morgan avatar, 3 hero avatars, 4 CTA avatars → JPG 2x
-- [x] People collage → 4 column images, **PNG with transparent background** 2x
-- [ ] Hamburger menu icon (mobile) → SVG (or draw it as 3 lines in CSS/inline SVG)
-- [ ] Icons → SVG: arrow-right, star, quote mark, chat bubble, clock, final CTA line icons (5)
+## Assets (final names)
+
+All files are in `public/`. "Where used" refers to the sections above.
+
+| File | Where used |
+|---|---|
+| `icons/logo-luma.svg` | Header logo (54×17, `ink`) |
+| `icons/logo-luma-white.svg` | Footer logo (54×17, white) |
+| `icons/arrow-right.svg` | Arrow on `link` buttons and "Explore →". The code uses an inline `currentColor` version (`ArrowRightIcon`) because this file has `#171B2C` hardcoded |
+| `icons/star.svg` | Hero rating badge (5 stars, 14px, yellow) |
+| `icons/quote-mark.svg` | Testimonial quote glyph (24×22, `primary`) |
+| `icons/contact-email.svg` | Contact card "Email" (40px box + chat icon) |
+| `icons/contact-response-time.svg` | Contact card "Response Time" (40px box + clock) |
+| `icons/deco-badge-b.svg` | Final CTA, "B" badge (83px, rotated 15°) |
+| `icons/deco-cube.svg` | Final CTA, cube |
+| `icons/deco-chat.svg` | Final CTA, chat bubble |
+| `icons/deco-bulb.svg` | Final CTA, lightbulb |
+| `icons/deco-ticket.svg` | Final CTA, ticket |
+| `icons/deco-circle.svg` | Final CTA, 32px outline circle (used twice) |
+| `icons/deco-square.svg` | Final CTA, outline rounded square (56px, rotated 12°) |
+| `images/hero-learner.png` | Hero photo (1252×1048) |
+| `images/featured-course.png` | Featured Course photo (1100×840) |
+| `images/testimonial-alex-morgan.png` | Testimonial avatar (96×96) |
+| `images/cta-avatar-01.png` … `04.png` | Final CTA, 4 overlapping avatars (80×80, yellow border baked in) |
+| `images/people/people-col-1.png` … `4.png` | People collage, 4 columns (transparent PNG, shadows baked in) |
+
+### Pending / generated assets
+- **Clean `hero-learner.png` and `featured-course.png` (photo only):** to be re-exported. The current files have UI baked in (hero: badges, peach bar, lavender circle; featured: "FEATURED COURSE" tag), so they are placeholders until then.
+- **Hero trust-row avatars `images/hero-avatar-01.png` … `03.png`:** to be exported with the cream border baked in (intentional, like the CTA avatars with the yellow border). Do not add borders in CSS to any avatar.
+- **Hamburger icon (mobile):** inline SVG in the Header component (3 lines, 1.5px stroke).
+- **OG image and favicon:** generated in code (`src/app/opengraph-image.tsx`, `src/app/icon.tsx`). The OG title font is `src/fonts/PlusJakartaSans-ExtraBold.ttf`.
 
 ## Mobile
 

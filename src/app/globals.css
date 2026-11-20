@@ -1,26 +1,202 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/*
+ * Design tokens: values from design-refs/notes.md.
+ * Static tokens live in @theme (they become utilities: bg-primary, rounded-card, ...).
+ * Responsive type tokens are CSS variables in :root, overridden at `lg` (1024px),
+ * and consumed by the `type-*` utilities below.
+ */
+
+@theme {
+  /* Breakpoints: mobile < 768 · tablet 768–1023 (mobile type scale) · desktop ≥ 1024 */
+  --breakpoint-md: 48rem;
+  --breakpoint-lg: 64rem;
+
+  /* Colors */
+  --color-primary: #3157f6;
+  --color-primary-hover: #2a4bdc; /* not in the design: slightly darker primary for hover */
+  --color-primary-soft: #e2e8ff;
+  --color-ink: #171b2c;
+  --color-text: #656770;
+  --color-text-muted: #6d7384;
+  --color-border: #dbdfeb;
+  --color-cream: #f9f8f3;
+  --color-yellow: #ffee7e;
+  --color-butter: #fff1c2;
+  --color-peach: #ffcb9f;
+  --color-coral: #ff704d;
+  --color-mustard: #e9d659;
+  --color-footer-text: #9e9faa;
+  --color-footer-strong: #e7e7ec;
+  --color-footer-divider: #656770;
+
+  /* Radius */
+  --radius-tag: 6px; /* small tags, number chips */
+  --radius-control: 8px; /* buttons, inputs, chips */
+  --radius-item: 12px; /* floating badges, contact items */
+  --radius-card: 16px; /* category cards, featured image, form card */
+  --radius-hero: 24px; /* hero image */
+
+  /* Shadows */
+  --shadow-badge: 0 4px 24px rgb(0 0 0 / 0.1);
+  --shadow-form: 0 12px 32px rgb(23 27 44 / 0.04);
+
+  /* Layout: 1280px frame = 1120px content + 2 × 80px side padding */
+  --container-page: 80rem;
 }
 
+/* Fonts: the --font-plus-jakarta / --font-inter variables are set by next/font in layout.tsx,
+   so these must be `inline` to resolve at the point of use. */
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-heading: var(--font-plus-jakarta), ui-sans-serif, system-ui, sans-serif;
+  --font-body: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
 }
 
-@media (prefers-color-scheme: dark) {
+/* Type scale, mobile values. Tablet uses the mobile scale (notes.md → Tablet). */
+:root {
+  --h1-size: 40px;
+  --h1-leading: 44px;
+  --h1-tracking: -1px;
+  --h2-size: 36px;
+  --h2-leading: 40px;
+  --h2-tracking: -0.9px;
+  --h3-size: 32px;
+  --h3-leading: 36px;
+  --h3-tracking: -0.8px;
+  --quote-size: 20px;
+  --quote-leading: 32px;
+  --quote-tracking: 0px;
+  --h5-size: 20px;
+  --h5-leading: 28px;
+  --subtitle-1-size: 16px;
+  --subtitle-1-leading: 26px;
+  --subtitle-2-size: 14px;
+  --subtitle-2-leading: 24px;
+}
+
+@media (min-width: 64rem) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --h1-size: 64px;
+    --h1-leading: 70px;
+    --h1-tracking: -1.6px;
+    --h2-size: 56px;
+    --h2-leading: 64px;
+    --h2-tracking: -1.4px;
+    --h3-size: 48px;
+    --h3-leading: 56px;
+    --h3-tracking: -1.2px;
+    --quote-size: 30px;
+    --quote-leading: 44px;
+    --quote-tracking: -0.75px;
+    --h5-leading: 32px;
+    --subtitle-1-size: 18px;
+    --subtitle-1-leading: 28px;
+    --subtitle-2-size: 16px;
+    --subtitle-2-leading: 28px;
   }
 }
 
+/* Typography utilities (family + weight + responsive size/leading/tracking) */
+@utility type-h1 {
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: var(--h1-size);
+  line-height: var(--h1-leading);
+  letter-spacing: var(--h1-tracking);
+}
+@utility type-h2 {
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: var(--h2-size);
+  line-height: var(--h2-leading);
+  letter-spacing: var(--h2-tracking);
+}
+@utility type-h3 {
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: var(--h3-size);
+  line-height: var(--h3-leading);
+  letter-spacing: var(--h3-tracking);
+}
+@utility type-quote {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: var(--quote-size);
+  line-height: var(--quote-leading);
+  letter-spacing: var(--quote-tracking);
+}
+@utility type-h5 {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: var(--h5-size);
+  line-height: var(--h5-leading);
+}
+@utility type-subtitle-1 {
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: var(--subtitle-1-size);
+  line-height: var(--subtitle-1-leading);
+}
+@utility type-subtitle-2 {
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: var(--subtitle-2-size);
+  line-height: var(--subtitle-2-leading);
+}
+@utility type-body {
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 24px;
+}
+@utility type-overline {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 16px;
+  letter-spacing: 1.44px;
+  text-transform: uppercase;
+}
+@utility type-caption {
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 20px;
+}
+
+/* Base */
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--color-cream);
+  color: var(--color-text);
+  font-family: var(--font-body);
+}
+
+/* Visible focus on any background: primary ring + white gap. */
+:focus-visible {
+  outline: 3px solid var(--color-primary);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 2px #fff;
+}
+
+/* The skip link focuses <main>; no ring needed on a non-interactive target. */
+main:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
