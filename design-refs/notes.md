@@ -314,3 +314,4 @@ From the design (the mobile header has a component named **"Button - Toggle menu
 - Step 2 text differs between mobile and desktop → unified.
 - Small per-breakpoint color differences (step 2 icon bg, People paragraph color, copyright color) → followed each breakpoint as designed.
 - Tablet layout is not in Figma → my own decision (breakpoints above).
+- Link destinations: anchors only where the link name matches a section (`Courses`, `Categories` and the "Explore…" CTAs → `#categories`; "See how it works" → `#how-it-works`; `Contact` → `#contact`; "Start learning" and "View course" → `#featured-course`). Everything else (For Teams, Community, About, Instructors, Log in, Careers, Journal, Help Center, Terms, Privacy) is `href="#"` because those pages or sections do not exist in the design.

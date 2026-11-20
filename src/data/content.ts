@@ -5,16 +5,15 @@ import type {
 } from "@/types/content";
 
 /*
- * Mock content. Section ids (#categories, #people, ...) are the anchor targets that the
- * sections will define in the next steps of Phase 3. Links with no matching page or section
- * in the design point to "#".
+ * Mock content. A link points to a section anchor only when its name matches the section;
+ * everything else is "#" because the page does not exist (see design-refs/notes.md).
  */
 
 export const mainNav: NavItem[] = [
   { label: "Courses", href: "#categories" },
-  { label: "For Teams", href: "#people" },
-  { label: "Community", href: "#testimonial" },
-  { label: "About", href: "#how-it-works" },
+  { label: "For Teams", href: "#" },
+  { label: "Community", href: "#" },
+  { label: "About", href: "#" },
 ];
 
 export const headerActions: HeaderActions = {
@@ -30,14 +29,14 @@ export const footer: FooterContent = {
       links: [
         { label: "Courses", href: "#categories" },
         { label: "Categories", href: "#categories" },
-        { label: "Instructors", href: "#people" },
-        { label: "For Teams", href: "#people" },
+        { label: "Instructors", href: "#" },
+        { label: "For Teams", href: "#" },
       ],
     },
     {
       title: "Company",
       links: [
-        { label: "About", href: "#how-it-works" },
+        { label: "About", href: "#" },
         { label: "Careers", href: "#" },
         { label: "Journal", href: "#" },
       ],

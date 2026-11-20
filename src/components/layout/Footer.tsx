@@ -55,8 +55,7 @@ export function Footer({ content }: FooterProps) {
           ))}
         </div>
 
-        {/* Gap above the divider (36px mobile, 66px desktop) is measured from design-refs, not the 48/64 in notes.md. */}
-        <p className="type-caption mt-9 border-t border-footer-divider pt-6 text-center text-white lg:mt-[66px] lg:text-left lg:text-footer-strong">
+        <p className="type-caption mt-12 border-t border-footer-divider pt-6 text-center text-white lg:mt-16 lg:text-left lg:text-footer-strong">
           {content.copyright}
         </p>
       </Container>
