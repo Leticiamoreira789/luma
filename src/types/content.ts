@@ -39,7 +39,10 @@ export interface HeroContent {
     text: string;
     avatars: ImageAsset[];
   };
+  /** Desktop and tablet photo (500×520 frame). */
   image: ImageAsset;
+  /** Mobile photo (346×380 frame, different crop in the design). */
+  imageMobile: ImageAsset;
   courseBadge: { value: string; label: string };
   ratingBadge: { label: string; stars: number };
 }

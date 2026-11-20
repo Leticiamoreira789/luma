@@ -1,4 +1,4 @@
-import Image from "next/image";
+import Image, { getImageProps } from "next/image";
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
@@ -9,14 +9,40 @@ interface HeroProps {
 }
 
 /**
- * < md: visual first (362×380 frame), text below, buttons stacked full width.
+ * < md: visual first (362×380 frame, mobile crop of the photo), text below, buttons stacked full width.
  * md–lg (tablet, not in Figma): same stack, visual at the desktop size (500×520), centered.
- * ≥ lg: two columns. The visual shrinks to 360px at lg and is 500px from xl (1280px frame),
- * because the 64px title needs room next to it at 1024px.
+ * ≥ lg: two columns. The whole visual (photo + badges) is scaled with `zoom` to 0.8 between
+ * lg and xl and is 100% from xl (1280px frame), because the 64px title needs room next to it
+ * at 1024px. Scaling the block, not only the photo, keeps the badges in the Figma position
+ * relative to the face.
  * Decorations are anchored to the edges of the frame, so they follow its size.
  */
 export function Hero({ content }: HeroProps) {
-  const { image, trust, courseBadge, ratingBadge } = content;
+  const { trust, courseBadge, ratingBadge } = content;
+
+  // Art direction: the mobile frame uses a different crop of the photo than desktop/tablet.
+  // The hero photo is the LCP on every viewport, so it uses fetchPriority instead of
+  // `preload` (which would preload both sources).
+  const common = { fetchPriority: "high", loading: "eager" } as const;
+  const desktopSizes =
+    "(min-width: 1280px) 500px, (min-width: 1024px) 400px, 500px";
+  const mobileSizes = "346px";
+  const desktopImage = getImageProps({
+    ...common,
+    alt: content.image.alt,
+    src: content.image.src,
+    width: content.image.width,
+    height: content.image.height,
+    sizes: desktopSizes,
+  });
+  const mobileImage = getImageProps({
+    ...common,
+    alt: content.imageMobile.alt,
+    src: content.imageMobile.src,
+    width: content.imageMobile.width,
+    height: content.imageMobile.height,
+    sizes: mobileSizes,
+  });
 
   return (
     <section
@@ -69,7 +95,7 @@ export function Hero({ content }: HeroProps) {
           </div>
         </div>
 
-        <div className="relative order-first mx-auto h-[380px] w-full max-w-[362px] md:order-first md:h-auto md:max-w-[500px] md:aspect-[500/520] lg:order-none lg:mx-0 lg:w-[360px] lg:shrink-0 xl:w-[500px]">
+        <div className="relative order-first mx-auto h-[380px] w-full max-w-[362px] md:order-first md:h-auto md:max-w-[500px] md:aspect-[500/520] lg:order-none lg:mx-0 lg:w-[500px] lg:shrink-0 lg:[zoom:0.8] xl:[zoom:1]">
           {/* Behind the photo */}
           <div
             aria-hidden="true"
@@ -81,15 +107,24 @@ export function Hero({ content }: HeroProps) {
           />
 
           <div className="absolute inset-y-0 inset-x-2 overflow-hidden rounded-card md:inset-x-0 md:rounded-hero">
-            <Image
-              src={image.src}
-              alt={image.alt}
-              width={image.width}
-              height={image.height}
-              priority
-              sizes="(min-width: 1280px) 500px, (min-width: 1024px) 360px, (min-width: 768px) 500px, 346px"
-              className="size-full object-cover"
-            />
+            <picture>
+              <source
+                media="(min-width: 768px)"
+                srcSet={desktopImage.props.srcSet}
+                sizes={desktopSizes}
+              />
+              <source
+                media="(max-width: 767px)"
+                srcSet={mobileImage.props.srcSet}
+                sizes={mobileSizes}
+              />
+              {/* The <img> is the fallback of <picture>; next/image cannot render it. */}
+              <img
+                {...mobileImage.props}
+                alt={content.image.alt}
+                className="size-full object-cover"
+              />
+            </picture>
           </div>
 
           <div className="absolute top-1.5 left-0 flex items-center gap-3 rounded-item bg-white px-4 py-3 shadow-badge md:top-4 md:-left-[22px]">

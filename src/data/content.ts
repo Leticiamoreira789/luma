@@ -79,6 +79,12 @@ export const hero: HeroContent = {
     width: 1000,
     height: 1040,
   },
+  imageMobile: {
+    src: "/images/hero-learner-mobile.png",
+    alt: "Person focused on learning at their laptop",
+    width: 692,
+    height: 760,
+  },
   courseBadge: { value: "120+", label: "expert-led courses" },
   ratingBadge: { label: "4.9 avg rating", stars: 5 },
 };
