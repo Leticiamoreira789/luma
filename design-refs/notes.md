@@ -45,8 +45,8 @@
 | `text` | `#656770` | Body/subtitle text, nav links, Log in |
 | `text-muted` | `#6D7384` | Card descriptions, stat labels, placeholders, step labels |
 | `border` | `#DBDFEB` | Card/input/button borders, header bottom border, dividers |
-| `cream` | `#F9F8F3` | Page bg, header, hero, How it works, contact items, input bg |
-| `white` | `#FFFFFF` | Categories, Testimonial, People, Contact bg, cards |
+| `cream` | `#F9F8F3` | Page bg, header, hero, How it works, People, contact items, input bg |
+| `white` | `#FFFFFF` | Categories, Testimonial, Contact bg, cards |
 | `yellow` | `#FFEE7E` | "View course" button, Featured tag, stars, final CTA avatar border |
 | `butter` | `#FFF1C2` | Final CTA bg, step 3 icon box |
 | `peach` | `#FFCB9F` | Hero accent bar, step 2 icon, final CTA decorations |
@@ -122,7 +122,7 @@
 - Right column (≈401 wide): **border-left 1px `border`**, padding-left 48, gap 20. Three stats: number in `h1` style `primary` (24K+, 120+, 92%) + label `body-1` `text-muted` (pt 4).
 - Use a `<blockquote>` + `<figcaption>`, and a `<dl>` for the stats.
 
-### 7. People ("Meet international students & teachers"): bg `white`, padding 100/80
+### 7. People ("Meet international students & teachers"): bg `cream` (confirmed in `desktop-full.png` / `mobile-full.png`; the section PNG is transparent), padding 100/80
 - Row, gap 60, items center; two columns flex-1 (530 each).
 - Left (gap 32): eyebrow "THE PEOPLE" → H3 (gap 8) → `subtitle-1` paragraph (lorem ipsum in design, so keep it as is) → "Explore teachers and students" (secondary button, w 268).
 - Right: **photo collage** over a 500px circle `primary-soft` (centered). There are **4 columns** with gap 16 and **10 photos**. Each column is a vertical stack with a 12.84px gap, the columns are centered vertically, and they have staggered top offsets:
