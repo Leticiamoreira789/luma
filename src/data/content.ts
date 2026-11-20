@@ -1,6 +1,8 @@
 import type {
+  CategoriesContent,
   FooterContent,
   HeaderActions,
+  HeroContent,
   NavItem,
 } from "@/types/content";
 
@@ -52,4 +54,66 @@ export const footer: FooterContent = {
     },
   ],
   copyright: "© 2026 Luma Learning",
+};
+
+export const hero: HeroContent = {
+  eyebrow: "Learn at your own pace",
+  title: "Build skills that actually move you forward.",
+  subtitle:
+    "Practical courses taught by people who do the work every day. Learn design, technology, business and more — one focused lesson at a time.",
+  primaryCta: { label: "Explore courses", href: "#categories" },
+  secondaryCta: { label: "See how it works", href: "#how-it-works" },
+  trust: {
+    highlight: "Trusted by 24,000+",
+    text: "learners",
+    // Decorative: the text next to them carries the meaning. The cream border is part of the image.
+    avatars: [
+      { src: "/images/hero-avatar-01.png", alt: "", width: 64, height: 64 },
+      { src: "/images/hero-avatar-02.png", alt: "", width: 64, height: 64 },
+      { src: "/images/hero-avatar-03.png", alt: "", width: 64, height: 64 },
+    ],
+  },
+  image: {
+    src: "/images/hero-learner.png",
+    alt: "Person focused on learning at their laptop",
+    width: 1000,
+    height: 1040,
+  },
+  courseBadge: { value: "120+", label: "expert-led courses" },
+  ratingBadge: { label: "4.9 avg rating", stars: 5 },
+};
+
+export const categories: CategoriesContent = {
+  eyebrow: "Find your next skill",
+  title: "Learn something worth knowing.",
+  subtitle:
+    "Short, practical courses designed around skills you can put to work immediately.",
+  cardCta: "Explore",
+  items: [
+    {
+      number: "01",
+      title: "Product Design",
+      description: "Turn complex problems into clear, useful experiences.",
+      href: "#",
+    },
+    {
+      number: "02",
+      title: "Technology",
+      description:
+        "Build a stronger understanding of the tools shaping digital products.",
+      href: "#",
+    },
+    {
+      number: "03",
+      title: "Business",
+      description: "Develop practical skills for better decisions and stronger teams.",
+      href: "#",
+    },
+    {
+      number: "04",
+      title: "Creative",
+      description: "Explore new ways to communicate, create and tell stories.",
+      href: "#",
+    },
+  ],
 };
